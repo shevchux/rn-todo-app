@@ -1,0 +1,30 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": ["airbnb"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint"],
+  "rules": {
+    "react/jsx-filename-extension": ["error", { "extensions": [".tsx", ".jsx"] }],
+    "react/jsx-one-expression-per-line": ["error", { "allow": "single-child" }],
+    "no-use-before-define": ["error", { "functions": false, "classes": false, "variables": false }],
+    "newline-before-return": "error",
+    "func-names": ["error", "never"],
+    "space-before-function-paren": ["error", "never"],
+    "no-implicit-coercion": "error",
+    "max-len": ["error", { "code": 120 }]
+  }
+}
