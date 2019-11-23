@@ -3,7 +3,11 @@
     "browser": true,
     "es6": true
   },
-  "extends": ["airbnb"],
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -16,15 +20,18 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "import", "@typescript-eslint"],
   "rules": {
-    "react/jsx-filename-extension": ["error", { "extensions": [".tsx", ".jsx"] }],
-    "react/jsx-one-expression-per-line": ["error", { "allow": "single-child" }],
-    "no-use-before-define": ["error", { "functions": false, "classes": false, "variables": false }],
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/explicit-function-return-type": ["warn", { "allowExpressions": true }],
+    "react/jsx-filename-extension": ["error", { "extensions": [".jsx", ".tsx"] }],
+    "react/prop-types": "off",
+    "linebreak-style": "off",
     "newline-before-return": "error",
-    "func-names": ["error", "never"],
+    "max-len": ["error", { "code": 120 }],
     "space-before-function-paren": ["error", "never"],
-    "no-implicit-coercion": "error",
-    "max-len": ["error", { "code": 120 }]
+    "func-names": "off"
   }
 }
