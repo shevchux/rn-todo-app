@@ -29,7 +29,12 @@ export const TodoScreen: React.FC<TodoScreenProps> = ({
 
   return (
     <View>
-      <EditModal value={todo.title} visible={modal} onCancel={hideModal} onSave={onSaveHandler} />
+      <EditModal
+        value={todo.title}
+        visible={modal}
+        onCancel={hideModal}
+        onSave={onSaveHandler}
+      />
       <AppCard style={styles.card}>
         <Text style={styles.title}>{todo.title}</Text>
         <Button title="Ред." onPress={showModal} />
@@ -39,7 +44,11 @@ export const TodoScreen: React.FC<TodoScreenProps> = ({
           <Button title="Назад" onPress={goBack} color={THEME.GRAY_COLOR} />
         </View>
         <View style={styles.button}>
-          <Button title="Удалить" color={THEME.DANGER_COLOR} onPress={() => removeTodo(todo.id)} />
+          <Button
+            title="Удалить"
+            color={THEME.DANGER_COLOR}
+            onPress={() => removeTodo(todo.id)}
+          />
         </View>
       </View>
     </View>
