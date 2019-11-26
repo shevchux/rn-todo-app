@@ -1,8 +1,10 @@
 import React from 'react';
 import {
-  View, Text, StyleSheet, TouchableOpacity,
+  View, StyleSheet,
 } from 'react-native';
 import ITodo from '../types/ITodo';
+import { AppText } from '../ui/AppTodo';
+import { TouchableWrapper } from '../ui/TouchableWrapper';
 
 interface TodoProps {
   todo: ITodo.Item;
@@ -11,14 +13,14 @@ interface TodoProps {
 }
 
 export const Todo: React.FC<TodoProps> = ({ todo, onOpen, onRemove }) => (
-  <TouchableOpacity
+  <TouchableWrapper
     onPress={() => onOpen(todo.id)}
     onLongPress={() => onRemove(todo.id)}
   >
     <View style={styles.todo}>
-      <Text style={styles.title}>{todo.title}</Text>
+      <AppText fontStyle="bold">{todo.title}</AppText>
     </View>
-  </TouchableOpacity>
+  </TouchableWrapper>
 );
 
 const styles = StyleSheet.create({
@@ -30,8 +32,5 @@ const styles = StyleSheet.create({
     borderColor: '#eee',
     borderRadius: 5,
     marginBottom: 10,
-  },
-  title: {
-    fontFamily: 'roboto-bold',
   },
 });

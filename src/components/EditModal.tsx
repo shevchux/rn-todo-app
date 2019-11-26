@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  Modal, View, TextInput, Button, StyleSheet, Alert,
+  Modal, View, TextInput, StyleSheet, Alert,
 } from 'react-native';
+import { SimpleLineIcons, MaterialIcons } from '@expo/vector-icons';
 import { THEME } from '../theme';
+import { AppButton } from '../ui/AppButton';
 
 interface EditModalProps {
   value: string;
@@ -15,6 +17,12 @@ export const EditModal: React.FC<EditModalProps> = ({
   value, visible, onCancel, onSave,
 }) => {
   const [title, setTitle] = useState(value);
+
+  useEffect(() => {
+    if (visible) {
+      setTitle(value);
+    }
+  }, [visible]);
 
   const onSaveHandler = (): void => {
     const trimmedTitle = title.trim();
@@ -36,8 +44,12 @@ export const EditModal: React.FC<EditModalProps> = ({
           autoCapitalize="none"
         />
         <View style={styles.buttons}>
-          <Button title="Отменить" onPress={onCancel} color={THEME.DANGER_COLOR} />
-          <Button title="Сохранить" onPress={onSaveHandler} />
+          <AppButton onPress={onCancel} color={THEME.DANGER_COLOR}>
+            <MaterialIcons name="arrow-back" size={20} />
+          </AppButton>
+          <AppButton onPress={onSaveHandler}>
+            <SimpleLineIcons name="check" size={20} />
+          </AppButton>
         </View>
       </View>
     </Modal>
